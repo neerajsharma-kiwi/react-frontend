@@ -10,13 +10,15 @@ import { Table }
 	from "react-bootstrap";
 import StudentTableRow
 	from "./StudentTableRow";
+import { Link }
+	from "react-router-dom";
 
 const StudentList = () => {
 	const [students, setStudents] = useState([]);
 
 	useEffect(() => {
 		axios
-			.get(process.env.REACT_APP_API_URL+"students/")
+			.get(process.env.REACT_APP_API_URL + "students/")
 			.then(({ data }) => {
 				setStudents(data);
 			})
@@ -33,6 +35,13 @@ const StudentList = () => {
 	};
 
 	return (
+		<>
+		<div className="alignment">
+			<Link className="edit-link"
+						to={"/create-student"}>
+						Add Student
+					</Link>
+		</div>
 		<div className="table-wrapper">
 			<Table striped bordered hover>
 				<thead>
@@ -46,6 +55,7 @@ const StudentList = () => {
 				<tbody>{DataTable()}</tbody>
 			</Table>
 		</div>
+		</>
 	);
 };
 

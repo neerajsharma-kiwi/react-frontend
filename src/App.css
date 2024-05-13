@@ -103,3 +103,12 @@ button:not(:disabled), [type=submit]:not(:disabled) {
   cursor: pointer;
   margin: 10px;
 }
+
+.alignment {
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  text-align: right;
+  width:65%;
+}
