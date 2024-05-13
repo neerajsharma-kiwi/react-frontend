@@ -71,7 +71,7 @@ const App = () => {
 								</Switch>
 								<Suspense fallback={<div>Loading...</div>}>
 									<Switch>
-									<Route path="/student-list" component={StudentList} />
+									<Route path="/student-list" render={() => <StudentList students={students} />} />
 									</Switch>
 								</Suspense>
 							</div>
