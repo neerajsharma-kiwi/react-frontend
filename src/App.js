@@ -27,15 +27,8 @@ import StudentList from
 // App Component
 const App = () => {
 
-	const [students, setStudents] = useState([
-		{ id: 1, firstName: 'John', lastName: 'Doe', grade: 'A' },
-		{ id: 2, firstName: 'Jane', lastName: 'Smith', grade: 'B' },
-		{ id: 3, firstName: 'Bob', lastName: 'Jones', grade: 'C' },
-	]);
-	const updateStudent = (updatedStudent) => {
-		setStudents(students.map(student => student.id === updatedStudent.id ? updatedStudent : student));
-	};
-
+	const [students, setStudents] = useState([]);
+	
 	return (
 		<Router>
 			<div className="App">
