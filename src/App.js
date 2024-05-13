@@ -1,6 +1,6 @@
 //App.js
 // Import React
-import React, { useState } from "react";
+import React, { useState,Suspense } from "react";
 //import useState from "react";
 // Import Bootstrap
 import { Nav, Navbar, Container, Row, Col }
@@ -21,14 +21,11 @@ import CreateStudent from
 	"./Components/create-student.component";
 import EditStudent from
 	"./Components/edit-student.component";
-import StudentList from
-	"./Components/student-list.component";
-
 // App Component
 const App = () => {
 
 	const [students, setStudents] = useState([]);
-	
+	const StudentList = React.lazy(() => import("./Components/student-list.component"));
 	return (
 		<Router>
 			<div className="App">
@@ -49,7 +46,6 @@ const App = () => {
 										Create Student
 									</Link>
 								</Nav>
-
 								<Nav>
 									<Link to={"/student-list"}
 										className="nav-link">
@@ -72,8 +68,12 @@ const App = () => {
 										component={CreateStudent} />
 									<Route path="/edit-student/:id"
 										component={EditStudent} />
-									<Route path="/student-list" render={() => <StudentList students={students} />} />
 								</Switch>
+								<Suspense fallback={<div>Loading...</div>}>
+									<Switch>
+									<Route path="/student-list" component={StudentList} />
+									</Switch>
+								</Suspense>
 							</div>
 						</Col>
 					</Row>
